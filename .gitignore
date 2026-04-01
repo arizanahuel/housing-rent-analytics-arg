@@ -1,0 +1,24 @@
+# Environments
+/venv/
+.venv/
+
+# Data Files (CSV)
+*.csv
+
+# Project Documentation (Local only)
+GEMINI.md
+
+# SQL Files
+# Ignore all SQL files in the root
+/*.sql
+# Ignore specific optimized/backup SQL files
+SQLQuery2_Optimized.sql
+SQLQuery2_Optimized.sql:Zone.Identifier
+
+# System Files
+.DS_Store
+Thumbs.db
+*.log
+
+# Allow only the cleaning script inside the sql folder
+!sql/data_cleaning.sql
