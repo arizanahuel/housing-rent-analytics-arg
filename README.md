@@ -8,7 +8,7 @@ End-to-end data pipeline covering web scraping, SQL cleaning, and interactive Po
 ## 📊 Dashboard Preview
 
 ### Market Overview & Geographic Distribution
-![Market Overview](powerbi/dashboard_overview.png).
+![Market Overview](powerbi/dashboard_overview.png)
 *KPIs, median price per m² by region, and choropleth map of Buenos Aires.*
 
 ### Price vs. Property Size Correlation
