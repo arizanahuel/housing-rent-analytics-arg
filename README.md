@@ -1,32 +1,72 @@
-# Real Estate Market Analysis: CABA & GBA (Argentina)
+# Housing Rent Analytics ARG 🏠
+### Residential Rental Market Analysis — CABA & Greater Buenos Aires
 
-## 💪 Motivation
-This project originated from a practical necessity in late 2025: navigating the complex and fragmented rental market in Buenos Aires to find a residence that optimized the balance between price, area, location, and amenities. Although the personal search was successfully concluded, the project evolved into a robust analytical tool designed to quantify market trends and provide data-driven insights into the Argentine real estate sector.
+End-to-end data pipeline covering web scraping, SQL cleaning, and interactive Power BI dashboards to analyze the Argentine rental market. Built from real data scraped in late 2025 across 10+ locations.
 
-## 🚀 Project Overview
-The core objective is to transform raw, scraped real estate data into actionable insights through rigorous SQL cleaning and interactive Power BI visualizations. This repository provides a comprehensive end-to-end data pipeline for analyzing the residential rental market in **Buenos Aires (CABA)** and **Greater Buenos Aires (GBA)**.
+---
 
-## 🛠️ Key Components
+## 📊 Dashboard Preview
 
-1. **Data Extraction (Python & AI-Assisted):** Raw data was scraped from Argenprop, capturing over 10 locations including CABA, San Isidro, Vicente López, and others.
-	I leveraged Large Language Models (LLMs) to architect and refine the scraping scripts. This allowed for an efficient, automated collection process while maintaining focus on downstream data integrity.
-2. **SQL Data Transformation:**
-    * **Normalization:** Standardized city and neighborhood names, including the mapping of "Comunas" for CABA listings.
-    * **Data Imputation:** Addressed missing values (area, expenses, rooms) using **median-based imputation** grouped by geographic clusters to maintain statistical integrity.
-    * **Currency Standardization:** Normalized all listings to USD using a consistent exchange rate for cross-sectional analysis.
-    * **Deduplication:** Identified and removed redundant records using Common Table Expressions (CTEs) and window functions.
-3. **Power BI Analysis:**
-	* **Geospatial Analysis:** Developed interactive choropleth maps to visualize rental density and median price per m² across different "Partidos" and "Comunas".
-	* **Statistical Modeling:** Conducted correlation analysis between property size and monthly rent, identifying a strong positive linear relationship (R = 0.77).
-	* **Variance Insight:** Calculated a Goodness of Fit (R2) of 0.59, quantifying how much of the rental price variance is explained by property square footage.
-	* **Key Metrics:** Tracking of median monthly rent, average price per m², and property size distribution through dynamic KPIs.
+### Market Overview & Geographic Distribution
+![Market Overview](images/dashboard_overview.png)
+*KPIs, median price per m² by region, and choropleth map of Buenos Aires.*
+
+### Price vs. Property Size Correlation
+![Correlation Analysis](images/dashboard_correlation.png)
+*Scatter plot with linear regression by jurisdiction (CABA vs. GBA), R = 0.77, R² = 0.59.*
+
+---
+
+## 🔍 Key Findings
+
+- **CABA costs 36% more per m² than GBA** — median of USD 13.17/m² vs USD 9.68/m², a meaningful gap for anyone optimizing the price/location tradeoff.
+- **Property size is a strong predictor of rent**, with a correlation coefficient of R = 0.77. The regression model explains 59% of rental price variance using square footage alone.
+- **The relationship holds differently by region** — GBA shows a steeper price-per-size slope than CABA, suggesting that larger properties in the suburbs carry a relatively higher premium than equivalent units in the city.
+- **Median monthly rent: USD 461** across 3,951 listings, with a median property size of 43.50 m².
+
+---
+
+## 🛠️ Pipeline Overview
+
+### 1. Data Extraction — Python
+- Scraped 3,951 listings from Argenprop across CABA and 10+ GBA locations (San Isidro, Vicente López, Avellaneda, Lomas de Zamora, and others)
+- Built 10 independent Python scrapers, one per geographic region, for automated and maintainable data collection
+- Used LLMs as a development tool to iterate on scraper architecture — all logic, validation, and data decisions were made manually
+
+### 2. SQL Data Transformation
+- **Normalization:** Standardized city and neighborhood names; mapped CABA listings to their corresponding Comunas
+- **Imputation:** Addressed missing values in area, expenses, and rooms using median-based imputation grouped by geographic cluster
+- **Currency standardization:** Converted all listings to USD using a consistent exchange rate for cross-sectional comparability
+- **Deduplication:** Removed redundant records using CTEs and window functions
+
+### 3. Power BI Analysis
+- **Choropleth map:** Rental density and median price per m² visualized across Partidos (GBA) and Comunas (CABA)
+- **Correlation analysis:** Scatter plot with regression lines per jurisdiction, displaying R and R² as dynamic KPIs
+- **Market KPIs:** Median rent, price per m², property size, and total listing count
+
+---
 
 ## 📁 Repository Structure
 
-* `scripts/`: Directory containing 10 Python-based scrapers developed for automated data acquisition across different geographic regions.
-* `sql/data_cleaning.sql`: Primary SQL script containing the logic for standardization, cleaning, and feature engineering.
-* `powerbi/rent_project.pbix`: Power BI dashboard file including the data model and visualizations.
-* `.gitignore`: Configured to exclude heavy raw data files (CSV) and local environments.
+```
+├── scripts/          # 10 Python scrapers, one per geographic region
+├── sql/
+│   └── data_cleaning.sql   # Full cleaning, normalization, and feature engineering logic
+├── powerbi/
+│   └── rent_project.pbix   # Power BI dashboard with data model and visualizations
+└── images/           # Dashboard screenshots for README
+```
+
+> **Note:** Raw CSV files are excluded from this repository due to size constraints. The SQL cleaning script is designed to run against the schema generated by the scrapers.
 
 ---
-*Note: Raw CSV files are excluded from this repository due to size and privacy constraints. The cleaning logic provided in the SQL script is designed to run against the schema generated by the initial scraper.*
+
+## 🧰 Tech Stack
+
+`Python` · `SQL (CTEs, Window Functions)` · `Power BI (DAX, Power Query)` · `Pandas`
+
+---
+
+## 👤 Author
+
+**Nahuel Ariza** — [LinkedIn](https://linkedin.com/in/nahuariza) · [GitHub](https://github.com/arizanahuel)
