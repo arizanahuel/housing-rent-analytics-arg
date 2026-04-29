@@ -8,11 +8,11 @@ End-to-end data pipeline covering web scraping, SQL cleaning, and interactive Po
 ## 📊 Dashboard Preview
 
 ### Market Overview & Geographic Distribution
-![Market Overview](<img width="2109" height="1191" alt="hoja 1" src="https://github.com/user-attachments/assets/2829812b-4881-41b9-8692-a0f1da873d92" />)
+![Market Overview](powerbi/dashboard_overview.png).
 *KPIs, median price per m² by region, and choropleth map of Buenos Aires.*
 
 ### Price vs. Property Size Correlation
-![Correlation Analysis](<img width="2112" height="1197" alt="hoja2" src="https://github.com/user-attachments/assets/bec5ff4b-62a8-4743-a88c-e49c9a72bba9" />)
+![Correlation Analysis](powerbi/dashboard_correlation.png)
 *Scatter plot with linear regression by jurisdiction (CABA vs. GBA), R = 0.77, R² = 0.59.*
 
 ---
